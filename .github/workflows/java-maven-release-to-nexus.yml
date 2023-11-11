@@ -6,6 +6,15 @@ on:
       gpg_private_key:
         description: GPG private key used for deployment
         required: true
+      gpg_passphrase:
+        description: Passphrase for GPG private key
+        required: true
+      nexus_username:
+        description: Maven Central Nexus username
+        required: true
+      nexus_password:
+        description: Maven Central Nexus password
+        required: true
 
 jobs:
   release:

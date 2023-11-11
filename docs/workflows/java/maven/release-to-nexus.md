@@ -10,9 +10,12 @@ None
 
 ## Input secrets
 
-| Name            | Description                         | Type   | Required |
-| --------------- | ----------------------------------- | ------ | -------- |
-| gpg_private_key | GPG private key used for deployment | string | true     |
+| Name            | Description                         | Required |
+| --------------- | ----------------------------------- | -------- |
+| gpg_private_key | GPG private key used for deployment | true     |
+| gpg_passphrase  | Passphrase for GPG private key      | true     |
+| nexus_username  | Maven Central Nexus username        | true     |
+| nexus_password  | Maven Central Nexus password        | true     |
 
 ## Output paramters
 
