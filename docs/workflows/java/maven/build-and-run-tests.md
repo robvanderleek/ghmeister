@@ -18,9 +18,9 @@ None
 name: "main"
 
 on:
-  push
+  push:
     branches: [main]
-  pull_request
+  pull_request:
     branches: [main]
 
 jobs:

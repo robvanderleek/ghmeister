@@ -14,9 +14,10 @@ A Collection of Reusable GitHub Actions Workflows
 
 - Maven
   - [Build and run tests](docs/workflows/java/maven/build-and-run-tests.md)
-  - [Release to Nexus](docs/workflows/java/maven/release-to-nexus.md)
+  - [Release](docs/workflows/java/maven/release.md)
 
 ## NodeJS
 
 - Yarn
   - [Build and run tests](docs/workflows/nodejs/yarn/build-and-run-tests.md)
+  - [Release](docs/workflows/nodejs/yarn/release.md)

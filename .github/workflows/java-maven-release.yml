@@ -1,4 +1,4 @@
-name: "Release to nexus"
+name: "Release"
 
 on:
   workflow_call:
