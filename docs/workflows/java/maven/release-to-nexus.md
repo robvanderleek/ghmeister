@@ -2,7 +2,7 @@
 
 **Description:** Release to Maven Central
 
-**File:** [java-maven-release-to-nexus.yml](https://github.com/robvanderleek/repo-meister/.github/workflows/java-maven-release-to-nexus.yml)
+**File:** [java-maven-release-to-nexus.yml](https://github.com/robvanderleek/repo-meister/blob/main/.github/workflows/java-maven-release-to-nexus.yml)
 
 ## Input parameters
 

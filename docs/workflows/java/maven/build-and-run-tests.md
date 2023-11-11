@@ -2,7 +2,7 @@
 
 **Description:** Build and run tests.
 
-**File:** [java-maven-test.yml](https://github.com/robvanderleek/repo-meister/.github/workflows/java-maven-test.yml)
+**File:** [java-maven-test.yml](https://github.com/robvanderleek/repo-meister/blob/main/.github/workflows/java-maven-test.yml)
 
 ## Input parameters
 
