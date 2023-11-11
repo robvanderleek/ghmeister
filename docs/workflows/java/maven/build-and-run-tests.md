@@ -17,7 +17,11 @@ None
 ```yaml
 name: "main"
 
-on: [push, pull_request]
+on:
+  push
+    branches: [main]
+  pull_request
+    branches: [main]
 
 jobs:
   test:
