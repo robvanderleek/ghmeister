@@ -1,4 +1,4 @@
-name: 'java-maven-test'
+name: 'Build and run tests'
 
 on: [workflow_call]
 
