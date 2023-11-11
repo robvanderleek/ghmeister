@@ -6,7 +6,6 @@ on:
       gpg_private_key:
         description: GPG private key used for deployment
         required: true
-        type: string
 
 jobs:
   release:
