@@ -1,8 +1,8 @@
-# Workflow 
+# Workflow
 
-*Description:* Release to Maven Central
+**Description:** Release to Maven Central
 
-*File:* [java-maven-release-to-nexus.yml](https://github.com/repo-meister/.github/workflows/java-maven-release-to-nexus.yml)
+**File:** [java-maven-release-to-nexus.yml](https://github.com/robvanderleek/repo-meister/.github/workflows/java-maven-release-to-nexus.yml)
 
 ## Input parameters
 
@@ -15,12 +15,12 @@ None
 ## Usage example
 
 ```yaml
-name: 'release'
+name: "release"
 
 on:
   push:
     tags:
-    - v*
+      - v*
 
 jobs:
   release:

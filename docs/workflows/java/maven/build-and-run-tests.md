@@ -1,8 +1,8 @@
-# Workflow 
+# Workflow
 
-*Description:* Build and run tests.
+**Description:** Build and run tests.
 
-*File:* [java-maven-test.yml](https://github.com/repo-meister/.github/workflows/java-maven-test.yml)
+**File:** [java-maven-test.yml](https://github.com/robvanderleek/repo-meister/.github/workflows/java-maven-test.yml)
 
 ## Input parameters
 
@@ -15,7 +15,7 @@ None
 ## Example
 
 ```yaml
-name: 'main'
+name: "main"
 
 on: [push, pull_request]
 
