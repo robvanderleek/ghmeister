@@ -12,10 +12,10 @@ None
 
 None
 
-## Usage example
+## Example
 
 ```yaml
-name: main
+name: 'main'
 
 on: [push, pull_request]
 
@@ -23,3 +23,7 @@ jobs:
   test:
     uses: robvanderleek/repo-meister/.github/workflows/java-maven-test.yml@main
 ```
+
+## Repositories using this workflow
+
+- [robvanderleek/JLifx](https://github.com/robvanderleek/JLifx/blob/main/.github/workflows/main.yml)
