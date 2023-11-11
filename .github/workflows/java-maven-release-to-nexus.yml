@@ -1,6 +1,12 @@
 name: "Release to nexus"
 
-on: [workflow_call]
+on:
+  workflow_call:
+    secrets:
+      gpg_private_key:
+        description: GPG private key used for deployment
+        required: true
+        type: string
 
 jobs:
   release:

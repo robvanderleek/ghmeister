@@ -8,6 +8,12 @@
 
 None
 
+## Input secrets
+
+| Name            | Description                         | Type   | Required |
+| --------------- | ----------------------------------- | ------ | -------- |
+| gpg_private_key | GPG private key used for deployment | string | true     |
+
 ## Output paramters
 
 None
