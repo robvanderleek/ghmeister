@@ -26,7 +26,7 @@ on:
     branches: ["main"]
 
 jobs:
-  build:
+  ci:
     uses: robvanderleek/repo-meister/.github/workflows/java-maven.yml@main
 ```
 

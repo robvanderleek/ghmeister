@@ -26,7 +26,7 @@ on:
     branches: ["main"]
 
 jobs:
-  test:
+  ci:
     uses: robvanderleek/repo-meister/.github/workflows/nodejs-yarn.yml@main
 ```
 

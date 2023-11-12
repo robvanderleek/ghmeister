@@ -1,0 +1,24 @@
+name: "nodejs-yarn"
+description: "Continuous Integration"
+inputs:
+  node-version:
+    required: false
+    type: string
+    default: "18.x"
+
+runs:
+  using: "composite"
+  steps:
+    - name: "Checkout sources"
+      uses: actions/checkout@v4
+
+    - name: "Setup NodeJS"
+      uses: actions/setup-node@v3
+      with:
+        node-version: ${{ inputs.node-version }}
+
+    - name: "Install dependencies"
+      run: yarn install
+
+    - name: "Run tests"
+      run: yarn test
