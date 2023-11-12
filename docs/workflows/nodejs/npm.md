@@ -1,6 +1,6 @@
 # Workflow
 
-**File:** [nodejs-yarn.yml](https://github.com/robvanderleek/repo-meister/blob/main/.github/workflows/nodejs-yarn.yml)
+**File:** [nodejs-npm.yml](https://github.com/robvanderleek/repo-meister/blob/main/.github/workflows/nodejs-npm.yml)
 
 **Description:** Build and run tests.
 
@@ -27,9 +27,7 @@ on:
 
 jobs:
   test:
-    uses: robvanderleek/repo-meister/.github/workflows/nodejs-yarn.yml@main
+    uses: robvanderleek/repo-meister/.github/workflows/nodejs-npm.yml@main
 ```
 
 ## Repositories using this workflow
-
-- [robvanderleek/mudslide](https://github.com/robvanderleek/mudslide/blob/main/.github/workflows/main.yml)
