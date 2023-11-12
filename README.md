@@ -16,5 +16,4 @@ A Collection of Reusable GitHub Actions Workflows for Continuous Integration
 
 ## NodeJS
 
-- [Yarn](docs/workflows/nodejs/yarn.md/build-and-run-tests.md)
-  - [Release](docs/workflows/nodejs/yarn/release.md)
+- [Yarn](docs/workflows/nodejs/yarn.md)
