@@ -19,6 +19,8 @@ runs:
 
     - name: "Install dependencies"
       run: yarn install
+      shell: bash
 
     - name: "Run tests"
       run: yarn test
+      shell: bash
