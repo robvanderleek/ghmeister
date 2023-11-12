@@ -1,0 +1,26 @@
+name: "Continuous Integration"
+
+on:
+  workflow_call:
+    inputs:
+      java-version:
+        required: false
+        type: string
+        default: "17"
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: "Checkout sources"
+        uses: actions/checkout@v4
+
+      - name: "Set up JDK"
+        uses: actions/setup-java@v3
+        with:
+          distribution: "temurin"
+          java-version: ${{ inputs.java-version }}
+          cache: maven
+
+      - name: "Build and run tests"
+        run: mvn install

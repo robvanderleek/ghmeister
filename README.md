@@ -1,6 +1,6 @@
 # Repo Meister
 
-A Collection of Reusable GitHub Actions Workflows
+A Collection of Reusable GitHub Actions Workflows for Continuous Integration
 
 <div align="center">
   <img src="docs/repo-meister-logo.png" width="384"/>
