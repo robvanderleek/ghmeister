@@ -1,6 +1,6 @@
 # Repo Meister
 
-A Collection of Reusable GitHub Actions Workflows for Continuous Integration
+A Collection of Reusable GitHub Actions and Workflows for Continuous Integration
 
 <div align="center">
   <img src="docs/repo-meister-logo.png" width="384"/>
@@ -12,7 +12,7 @@ A Collection of Reusable GitHub Actions Workflows for Continuous Integration
 
 ## Java
 
-- [Maven](docs/workflows/java/maven.md)
+- [Maven](https://github.com/repo-meister-actions/java-maven#readme)
 
 ## NodeJS
 

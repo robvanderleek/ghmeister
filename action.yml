@@ -1,5 +1,7 @@
 name: "nodejs-yarn"
+
 description: "Continuous Integration"
+
 inputs:
   node-version:
     required: false

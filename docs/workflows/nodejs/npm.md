@@ -27,7 +27,7 @@ on:
 
 jobs:
   ci:
-    uses: robvanderleek/repo-meister/.github/workflows/nodejs-npm.yml@main
+    uses: repo-meister/nodejs-npm/.github/workflows/nodejs-npm.yml@main
 ```
 
 ## Repositories using this workflow
