@@ -1,8 +1,8 @@
 # Workflow
 
-**Description:** Build and run tests.
-
 **File:** [java-maven.yml](https://github.com/robvanderleek/repo-meister/blob/main/.github/workflows/java-maven.yml)
+
+**Description:** Build and run tests.
 
 ## Input parameters
 
@@ -10,14 +10,14 @@
 | ------------ | ----------- | -------- | ------ | ------- |
 | java-version | JDK version | false    | string | 17      |
 
-## Output paramters
+## Output parameters
 
 None
 
-## Example
+## Usage example
 
 ```yaml
-name: "main"
+name: main
 
 on:
   push:

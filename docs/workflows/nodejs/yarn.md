@@ -1,8 +1,8 @@
 # Workflow
 
-**Description:** Build and run tests.
-
 **File:** [nodejs-yarn.yml](https://github.com/robvanderleek/repo-meister/blob/main/.github/workflows/nodejs-yarn.yml)
+
+**Description:** Build and run tests.
 
 ## Input parameters
 
@@ -10,14 +10,14 @@
 | ------------ | ----------- | -------- | ------ | ------- |
 | node-version | JDK version | false    | string | 18.x    |
 
-## Output paramters
+## Output parameters
 
 None
 
-## Example
+## Usage example
 
 ```yaml
-name: "main"
+name: main
 
 on:
   push:
