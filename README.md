@@ -16,5 +16,5 @@ A Collection of Reusable GitHub Actions Workflows for Continuous Integration
 
 ## NodeJS
 
-- [npm](docs/workflows/nodejs/npm.md)
+- [NPM](docs/workflows/nodejs/npm.md)
 - [Yarn](docs/workflows/nodejs/yarn.md)
