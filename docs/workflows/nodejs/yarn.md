@@ -2,13 +2,13 @@
 
 **Description:** Build and run tests.
 
-**File:** [java-maven.yml](https://github.com/robvanderleek/repo-meister/blob/main/.github/workflows/java-maven.yml)
+**File:** [nodejs-yarn.yml](https://github.com/robvanderleek/repo-meister/blob/main/.github/workflows/nodejs-yarn.yml)
 
 ## Input parameters
 
 | Name         | Description | Required | Type   | Default |
 | ------------ | ----------- | -------- | ------ | ------- |
-| java-version | JDK version | false    | string | 17      |
+| node-version | JDK version | false    | string | 18.x    |
 
 ## Output paramters
 
@@ -26,10 +26,10 @@ on:
     branches: ["main"]
 
 jobs:
-  build:
-    uses: robvanderleek/repo-meister/.github/workflows/java-maven.yml@main
+  test:
+    uses: robvanderleek/repo-meister/.github/workflows/nodejs-yarn.yml@main
 ```
 
 ## Repositories using this workflow
 
-- [robvanderleek/JLifx](https://github.com/robvanderleek/JLifx/blob/main/.github/workflows/main.yml)
+- [robvanderleek/mudslide](https://github.com/robvanderleek/mudslide/blob/main/.github/workflows/main.yml)

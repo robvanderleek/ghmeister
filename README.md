@@ -12,12 +12,9 @@ A Collection of Reusable GitHub Actions Workflows for Continuous Integration
 
 ## Java
 
-- Maven
-  - [Build and run tests](docs/workflows/java/maven/build-and-run-tests.md)
-  - [Release](docs/workflows/java/maven/release.md)
+- [Maven](docs/workflows/java/maven.md)
 
 ## NodeJS
 
-- Yarn
-  - [Build and run tests](docs/workflows/nodejs/yarn/build-and-run-tests.md)
+- [Yarn](docs/workflows/nodejs/yarn.md/build-and-run-tests.md)
   - [Release](docs/workflows/nodejs/yarn/release.md)

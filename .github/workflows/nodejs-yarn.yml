@@ -1,6 +1,12 @@
 name: "Build and run tests"
 
-on: [workflow_call]
+on:
+  workflow_call:
+    inputs:
+      node-version:
+        required: false
+        type: string
+        default: "18.x"
 
 jobs:
   build:
@@ -14,7 +20,7 @@ jobs:
       - name: "Setup NodeJS"
         uses: actions/setup-node@v3
         with:
-          node-version: 18.x
+          node-version: ${{ node-version }}
 
       - name: "Force HTTPS"
         run: git config --global url."https://github".insteadOf ssh://git@github
