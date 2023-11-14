@@ -16,7 +16,7 @@ This collection of resusable workflows and actions make it easy to setup Continu
 - Use a standard build setup, based on best practices from the community
 - Automatically have up-to-date actions with sane defaults
 
-# Workflows
+# Actions and Workflows
 
 ## Java
 
@@ -25,4 +25,4 @@ This collection of resusable workflows and actions make it easy to setup Continu
 ## NodeJS
 
 - [NPM](docs/workflows/nodejs/npm.md)
-- [Yarn](docs/workflows/nodejs/yarn.md)
+- [Yarn](https://github.com/repo-meister-actions/nodejs-yarn#readme)
