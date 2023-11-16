@@ -1,6 +1,6 @@
 # Repo Meister
 
-A Collection of Reusable GitHub Actions and Workflows for Continuous Integration
+A Collection of Reusable GitHub Actions and Workflows.
 
 <div align="center">
   <img src="docs/repo-meister-logo.png" width="384"/>
@@ -8,18 +8,18 @@ A Collection of Reusable GitHub Actions and Workflows for Continuous Integration
 
 # Introduction
 
-This collection of resusable workflows and actions make it easy to setup Continuous Integration for your repository using GitHub Actions. Find your programming language and build tool below to get started.
+This collection of resusable workflows and actions make it easy to setup GitHub Actions for your repository. Find your programming language and build tool below to get started.
 
 ## Reasons for using Repo Meister
 
-- Fastest way to setup CI for your project
-- Use a standard build setup, based on best practices from the community
+- Fastest way to setup GitHub Actions for your project
+- Use a standard setup, based on best practices from the community
 - Automatically have up-to-date actions with sane defaults
-- Reduce code duplication in your build configurations
+- Reduce code duplication in your workflows
 
 # Quickstart
 
-Pre-configured GitHubb Actions and Workflows make it possible to setup a standard Continuous Integration pipeline in minutes.
+Pre-configured GitHubb Actions and Workflows make it possible to, for example, setup a standard Continuous Integration pipeline in minutes.
 
 For example, if your project used NodeJS and NPM, you need to put the following configuration in a file called `.github/workflows/main.yml` to setup Continunous Integreation for all pushes and pull-requests to your `main` branch:
 
@@ -34,7 +34,7 @@ on:
 
 jobs:
   ci:
-    uses: repo-meister/nodejs-npm/.github/workflows/ci.yml@main
+    uses: repo-meister/ci-nodejs-npm/.github/workflows/ci.yml@main
 ```
 
 Check the [Actions and Workflows](#actions-and-workflows) section below for a listing of reusable workflows and actions.
@@ -48,12 +48,12 @@ Check the [Actions and Workflows](#actions-and-workflows) section below for a li
 
 ### Java
 
-- [Maven](https://github.com/repo-meister-actions/java-maven#readme)
+- [Maven](https://github.com/repo-meister-actions/ci-java-maven#readme)
 
 ### NodeJS
 
 - [NPM](docs/workflows/nodejs/npm.md)
-- [Yarn](https://github.com/repo-meister-actions/nodejs-yarn#readme)
+- [Yarn](https://github.com/repo-meister-actions/ci-nodejs-yarn#readme)
 
 # Feedback, suggestions and bug reports
 
