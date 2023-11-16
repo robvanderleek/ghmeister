@@ -57,7 +57,17 @@ Check the [Actions and Workflows](#actions-and-workflows) section below for a li
 
 # Feedback, suggestions and bug reports
 
-Please create an issue here: https://github.com/robvanderleek/repo-mister/issues
+If you have suggestions for how Repo Meister could be improved, or want to report
+a bug, [open an issue](https://github.com/robvanderleek/repomeister/issues)! All
+and any contributions are appreciated.
+
+To show your project uses Repo Meister place this badge in the README markdown:
+
+[![Repo Meister](https://img.shields.io/badge/Repo-Meister-green.svg)](https://github.com/robvanderleek/repo-meister)
+
+```
+[![Repo Meister](https://img.shields.io/badge/Repo-Meister-green.svg)](https://github.com/robvanderleek/meister)
+```
 
 # License
 
