@@ -15,14 +15,51 @@ This collection of resusable workflows and actions make it easy to setup Continu
 - Fastest way to setup CI for your project
 - Use a standard build setup, based on best practices from the community
 - Automatically have up-to-date actions with sane defaults
+- Reduce code duplication in your build configurations
+
+# Quickstart
+
+Pre-configured GitHubb Actions and Workflows make it possible to setup a standard Continuous Integration pipeline in minutes.
+
+For example, if your project used NodeJS and NPM, you need to put the following configuration in a file called `.github/workflows/main.yml` to setup Continunous Integreation for all pushes and pull-requests to your `main` branch:
+
+```yaml
+name: main
+
+on:
+  push:
+    branches: ["main"]
+  pull_request:
+    branches: ["main"]
+
+jobs:
+  ci:
+    uses: repo-meister/nodejs-npm/.github/workflows/ci.yml@main
+```
+
+Check the [Actions and Workflows](#actions-and-workflows) section below for a listing of reusable workflows and actions.
+
+> [!NOTE]
+> Contributions needed! Please share your reusable workflows by [opening an issue](https://github.com/robvanderleek/repo-meister/issues/new).
 
 # Actions and Workflows
 
-## Java
+## Continuous Integration
+
+### Java
 
 - [Maven](https://github.com/repo-meister-actions/java-maven#readme)
 
-## NodeJS
+### NodeJS
 
 - [NPM](docs/workflows/nodejs/npm.md)
 - [Yarn](https://github.com/repo-meister-actions/nodejs-yarn#readme)
+
+# Feedback, suggestions and bug reports
+
+Please create an issue here: https://github.com/robvanderleek/repo-mister/issues
+
+# License
+
+[MIT](LICENSE) © 2023 Rob van der Leek <robvanderleek@gmail.com>
+(https://twitter.com/robvanderleek)
