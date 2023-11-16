@@ -52,7 +52,7 @@ Check the [Actions and Workflows](#actions-and-workflows) section below for a li
 
 ### NodeJS
 
-- [NPM](docs/workflows/nodejs/npm.md)
+- [NPM](https://github.com/repo-meister-actions/ci-nodejs-npm#readme)
 - [Yarn](https://github.com/repo-meister-actions/ci-nodejs-yarn#readme)
 
 # Feedback, suggestions and bug reports
