@@ -55,6 +55,18 @@ Check the [Actions and Workflows](#actions-and-workflows) section below for a li
 - [NPM](https://github.com/repo-meister-actions/ci-nodejs-npm#readme)
 - [Yarn](https://github.com/repo-meister-actions/ci-nodejs-yarn#readme)
 
+## Publish, deploy, release
+
+WIP
+
+## Code Quality
+
+WIP
+
+## Miscellaneous
+
+WIP
+
 # Feedback, suggestions and bug reports
 
 If you have suggestions for how Repo Meister could be improved, or want to report
