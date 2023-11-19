@@ -1,0 +1,18 @@
+[tool.poetry]
+name = "repomeister"
+version = "0.1.0"
+description = "GitHub Repository Manager"
+authors = ["Rob van der Leek <5324924+robvanderleek@users.noreply.github.com>"]
+license = "MIT"
+readme = "README.md"
+
+[tool.poetry.scripts]
+repomeister = "repomeister.__main__:cli"
+
+[tool.poetry.dependencies]
+python = "^3.12"
+typer = "^0.9.0"
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
