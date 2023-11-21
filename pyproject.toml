@@ -10,8 +10,19 @@ readme = "README.md"
 repomeister = "repomeister.__main__:cli"
 
 [tool.poetry.dependencies]
-python = "^3.12"
+python = ">=3.11,<3.13"
 typer = "^0.9.0"
+requests = "^2.31.0"
+pygithub = "^2.1.1"
+pyyaml = "^6.0.1"
+
+[tool.poe.tasks.bundle]
+help = "Create a binary executable using pyinstaller"
+cmd = "pyinstaller --workpath .build --specpath dist -n repomeister repomeister/__main__.py"
+
+[tool.poetry.group.dev.dependencies]
+pyinstaller = "^6.2.0"
+poethepoet = "^0.24.4"
 
 [build-system]
 requires = ["poetry-core"]
