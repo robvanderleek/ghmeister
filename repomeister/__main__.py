@@ -1,7 +1,10 @@
+import sys
+
 import typer
 from github import Auth, Github
 
 from repomeister.auth import get_github_token
+from repomeister.tui.RepoMeisterApp import RepoMeisterApp
 
 cli = typer.Typer(no_args_is_help=True, add_completion=False)
 
@@ -25,11 +28,22 @@ def changelog(repository: str = typer.Argument(help='Full repository name, for e
         print(f'- {title}')
 
 
-@cli.callback()
-def main():
+@cli.callback(invoke_without_command=False)
+def callback(ctx: typer.Context):
     """Repo Meister: GitHub Repository Manager."""
-    pass
+    if ctx.invoked_subcommand:
+        print('Running subcommand')
+    else:
+        print('Running default')
+
+
+def main():
+    if len(sys.argv) == 1:
+        app = RepoMeisterApp()
+        app.run()
+    else:
+        cli()
 
 
 if __name__ == '__main__':
-    cli()
+    main()
