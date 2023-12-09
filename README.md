@@ -8,6 +8,17 @@ GitHub Repository Manager
 
 # Introduction
 
+# Quickstart
+
+## Installation
+
+To install Repo Meister in an isolated Python environment using
+[pipx](https://pipx.pypa.io/stable/) run:
+
+```shell
+pipx install repomeister
+```
+
 # Feedback, suggestions and bug reports
 
 If you have suggestions for how Repo Meister could be improved, or want to
