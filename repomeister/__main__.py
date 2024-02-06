@@ -1,9 +1,8 @@
 import sys
 
 import typer
-from github import Auth, Github
 
-from repomeister.auth import get_github_token
+from repomeister.services.GitHubService import get_github
 from repomeister.tui.RepoMeisterApp import RepoMeisterApp
 
 cli = typer.Typer(no_args_is_help=True, add_completion=False)
@@ -13,9 +12,7 @@ cli = typer.Typer(no_args_is_help=True, add_completion=False)
 def changelog(repository: str = typer.Argument(help='Full repository name, for example: my-org/my-repo'),
               from_sha: str = typer.Argument(help='From SHA'),
               to_sha: str = typer.Argument(help='To SHA')):
-    token = get_github_token()
-    auth = Auth.Token(token['access_token'])
-    github = Github(auth=auth)
+    github = get_github()
     repo = github.get_repo(repository)
     comparison = repo.compare(from_sha, to_sha)
     print(f'## Changelog for {repository}')
