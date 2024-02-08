@@ -8,6 +8,13 @@ from repomeister.tui.RepoMeisterApp import RepoMeisterApp
 cli = typer.Typer(no_args_is_help=True, add_completion=False)
 
 
+@cli.command(help="Login")
+def login():
+    github = get_github()
+    user = github.get_user()
+    print(f'Logged in as {user.login}')
+
+
 @cli.command(help="Create a changelog")
 def changelog(repository: str = typer.Argument(help='Full repository name, for example: my-org/my-repo'),
               from_sha: str = typer.Argument(help='From SHA'),
