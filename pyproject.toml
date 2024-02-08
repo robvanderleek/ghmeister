@@ -1,13 +1,13 @@
 [tool.poetry]
-name = "repomeister"
+name = "ghmeister"
 version = "0.1.0"
-description = "GitHub Repository Manager"
+description = "GitHub Manager"
 authors = ["Rob van der Leek <5324924+robvanderleek@users.noreply.github.com>"]
 license = "MIT"
 readme = "README.md"
 
 [tool.poetry.scripts]
-repomeister = "repomeister.__main__:main"
+ghm = "ghmeister.__main__:main"
 
 [tool.poetry.dependencies]
 python = ">=3.11,<3.13"
@@ -19,7 +19,7 @@ textual = "^0.42.0"
 
 [tool.poe.tasks.bundle]
 help = "Create a binary executable using pyinstaller"
-cmd = "pyinstaller --workpath .build --specpath dist -n repomeister repomeister/__main__.py"
+cmd = "pyinstaller --workpath .build --specpath dist -n ghmeister ghmeister/__main__.py"
 
 [tool.poetry.group.dev.dependencies]
 pyinstaller = "^6.2.0"

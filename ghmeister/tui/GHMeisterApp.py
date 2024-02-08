@@ -3,10 +3,10 @@ from textual.app import App, ComposeResult
 from textual.widgets import Header, Footer, ListView, ListItem, Label
 from textual.worker import get_current_worker
 
-from repomeister.services.GitHubService import get_github
+from ghmeister.services.GitHubService import get_github
 
 
-class RepoMeisterApp(App):
+class GHMeisterApp(App):
     BINDINGS = [("q", "quit", "Quit")]
 
     def __init__(self):

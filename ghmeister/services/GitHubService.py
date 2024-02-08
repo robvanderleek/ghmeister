@@ -1,6 +1,6 @@
 from github import Auth, Github
 
-from repomeister.auth import get_github_token
+from ghmeister.auth import get_github_token
 
 github = None
 

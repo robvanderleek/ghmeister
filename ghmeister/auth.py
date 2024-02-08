@@ -25,10 +25,10 @@ def _device_flow_login() -> Union[dict, None]:
     result = None
     client_id = 'Iv1.7b1ad9c0ae2f37e8'
     home = expanduser("~")
-    repomeister_yml_path = Path(f'{home}/.repomeister/github.yml')
+    ghmeister_yml_path = Path(f'{home}/.ghmeister/github.yml')
     config = {}
-    if repomeister_yml_path.exists():
-        config = yaml.safe_load(open(repomeister_yml_path))
+    if ghmeister_yml_path.exists():
+        config = yaml.safe_load(open(ghmeister_yml_path))
         if 'access_token' in config:
             result = {'access_token': config['access_token']}
         if 'refresh_token' in config:
@@ -39,12 +39,12 @@ def _device_flow_login() -> Union[dict, None]:
         interval = json['interval']
         result = _poll_for_token(client_id, device_code, interval)
     if result:
-        Path(f'{home}/.repomeister/').mkdir(exist_ok=True)
+        Path(f'{home}/.ghmeister/').mkdir(exist_ok=True)
         if 'refresh_token' in result:
             config['refresh_token'] = result['refresh_token']
         else:
             config['access_token'] = result['access_token']
-        yaml.dump(config, open(repomeister_yml_path, "w"))
+        yaml.dump(config, open(ghmeister_yml_path, "w"))
     return result
 
 

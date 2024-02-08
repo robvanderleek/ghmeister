@@ -1,9 +1,9 @@
-# Repo Meister
+# GH Meister
 
-GitHub Repository Manager
+GitHub management made easy.
 
 <div align="center">
-  <img src="docs/repo-meister-logo.png" width="384"/>
+  <img src="docs/gh-meister-logo.png" width="384"/>
 </div>
 
 # Introduction
@@ -12,26 +12,40 @@ GitHub Repository Manager
 
 ## Installation
 
-To install Repo Meister in an isolated Python environment using
+To install GH Meister in an isolated Python environment using
 [pipx](https://pipx.pypa.io/stable/) run:
 
 ```shell
-pipx install repomeister
+pipx install ghmeister
 ```
+
+# Development
+
+## Release to PyPi
+
+1. Create a distribution build:
+    ```shell
+    poetry build
+    ```
+
+2. Publish to PyPi:
+    ```shell
+    poetry publish
+    ```
 
 # Feedback, suggestions and bug reports
 
-If you have suggestions for how Repo Meister could be improved, or want to
+If you have suggestions for how GH Meister could be improved, or want to
 report a bug, [open an
-issue](https://github.com/robvanderleek/repomeister/issues)! All and any
+issue](https://github.com/robvanderleek/ghmeister/issues)! All and any
 contributions are appreciated.
 
-To show your project uses Repo Meister place this badge in the README markdown:
+To show your project uses GH Meister place this badge in the README markdown:
 
-[![Repo Meister](https://img.shields.io/badge/Repo%20Meister-green.svg)](https://github.com/robvanderleek/repomeister)
+[![GH Meister](https://img.shields.io/badge/GH%20Meister-green.svg)](https://github.com/robvanderleek/ghmeister)
 
 ```
-[![Repo Meister](https://img.shields.io/badge/Repo%20Meister-green.svg)](https://github.com/robvanderleek/repomeister)
+[![GH Meister](https://img.shields.io/badge/GH%20Meister-green.svg)](https://github.com/robvanderleek/ghmeister)
 ```
 
 # License

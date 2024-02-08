@@ -2,8 +2,8 @@ import sys
 
 import typer
 
-from repomeister.services.GitHubService import get_github
-from repomeister.tui.RepoMeisterApp import RepoMeisterApp
+from ghmeister.services.GitHubService import get_github
+from ghmeister.tui.GHMeisterApp import GHMeisterApp
 
 cli = typer.Typer(no_args_is_help=True, add_completion=False)
 
@@ -34,7 +34,7 @@ def changelog(repository: str = typer.Argument(help='Full repository name, for e
 
 @cli.callback(invoke_without_command=False)
 def callback(ctx: typer.Context):
-    """Repo Meister: GitHub Repository Manager."""
+    """GH Meister: GitHub management made easy."""
     if ctx.invoked_subcommand:
         print('Running subcommand')
     else:
@@ -43,7 +43,7 @@ def callback(ctx: typer.Context):
 
 def main():
     if len(sys.argv) == 1:
-        app = RepoMeisterApp()
+        app = GHMeisterApp()
         app.run()
     else:
         cli()
