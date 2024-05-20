@@ -1,14 +1,21 @@
+import os
+import pprint
 import sys
 
 import typer
 from dotenv import load_dotenv
+from rich import print_json
+from rich.console import Console
 
 from ghmeister.services.GitHubService import get_username
+from ghmeister.services.github import Users
 
 load_dotenv()
 
-cli = typer.Typer(no_args_is_help=True, add_completion=False)
+console = Console()
 
+cli = typer.Typer(no_args_is_help=True, add_completion=False, result_callback=pprint.pprint)
+cli.add_typer(Users.users, name="users", help="Endpoints for users")
 
 # @cli.command(help="Create a changelog")
 # def changelog(repository: str = typer.Argument(help='Full repository name, for example: my-org/my-repo'),
@@ -37,6 +44,10 @@ def callback(ctx: typer.Context):
 
 
 def main():
+    token = os.getenv('GITHUB_MEISTER_TOKEN')
+    if not token:
+        console.print('[red]GitHub access token not found in environment variable GITHUB_MEISTER_TOKEN[/red]')
+        sys.exit(1)
     if len(sys.argv) == 1:
         print(get_username())
     else:
