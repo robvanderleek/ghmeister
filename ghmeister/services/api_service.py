@@ -1,8 +1,6 @@
 import os
 
-import requests
-
-from ghmeister.services.github.Users import get_authenticated_user
+from ghmeister.services.github.endpoints.Users import get_authenticated_user
 
 github = None
 
