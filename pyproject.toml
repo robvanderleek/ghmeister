@@ -16,6 +16,8 @@ requests = "^2.31.0"
 pyyaml = "^6.0.1"
 python-dotenv = "^1.0.1"
 rich = "^13.7.1"
+sh = "^2.0.6"
+inquirerpy = "^0.3.4"
 
 [tool.poe.tasks.bundle]
 help = "Create a binary executable using pyinstaller"

@@ -1,20 +1,19 @@
-import os
+import requests
 
-from ghmeister.services.github.endpoints.Users import get_authenticated_user
+from ghmeister.Context import Context
 
-github = None
-
-
-def _get_github_token() -> str:
-    token = os.getenv('GITHUB_MEISTER_TOKEN')
-    if not token:
-        raise Exception('No GitHub access token found in environment')
-    return token
+BASE_URL = 'https://api.github.com'
 
 
-def get_username() -> str:
-    return get_authenticated_user()['login']
+def api_get(endpoint: str) -> dict:
+    return requests.get(f'{BASE_URL}/{endpoint}', headers=_get_headers()).json()
 
 
-def get_avatar():
-    return get_authenticated_user()['avatar_url']
+def api_post(endpoint: str, data: dict) -> dict:
+    print(endpoint, data)
+    return requests.post(f'{BASE_URL}/{endpoint}', json=data, headers=_get_headers()).json()
+
+
+def _get_headers() -> dict:
+    return {'Accept': 'application/vnd.github+json', 'Authorization': f'Bearer {Context.token}',
+            'X-GitHub-Api-Version': '2022-11-28'}
