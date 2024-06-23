@@ -1,5 +1,6 @@
 import sys
 
+import click
 import typer
 from dotenv import load_dotenv
 from requests import Response
@@ -7,8 +8,10 @@ from requests import Response
 from ghmeister.Context import Context
 from ghmeister.commands import Utils
 from ghmeister.commands.github import Issues, Users
+from ghmeister.commands.github.Repositories import Repositories
 from ghmeister.commands.github.Users import get_authenticated_user
 from ghmeister.utils import pretty_print_json
+from ghmeister.wizard.repository_wizard import repository_wizard
 
 load_dotenv()
 
@@ -30,6 +33,7 @@ cli.add_typer(Users.users, name="users", help="GitHub endpoints for users (alias
 cli.add_typer(Users.users, name="user", hidden=True)
 cli.add_typer(Issues.issues, name="issues", help="GitHub endpoints for issues (alias: issue)")
 cli.add_typer(Issues.issues, name="issue", hidden=True)
+cli.add_typer(Repositories.app, name="repositories", help="GitHub endpoints for repositories")
 cli.add_typer(Utils.utils, name="utils", help="Various utilities")
 
 
@@ -41,7 +45,13 @@ def callback(ctx: typer.Context):
 def main():
     Context.init()
     if len(sys.argv) == 1:
-        print(get_authenticated_user().json()['login'])
+        if Context.get_owner() and Context.get_repo():
+            try:
+                repository_wizard()
+            except KeyboardInterrupt:
+                print('\u2B50 Please star GH Meister on GitHub! https://github.com/robvanderleek/ghmeister')
+        else:
+            print(get_authenticated_user().json()['login'])
     else:
         cli()
 

@@ -3,13 +3,12 @@ from typing import Annotated, Optional
 import typer
 from requests import Response
 
-from ghmeister.Context import Context
 from ghmeister.services.api_service import api_post
 
 issues = typer.Typer(no_args_is_help=True)
 
 
-@issues.command(help=f"Create an issue: {Context.get_owner()}")
+@issues.command(help=f"Create an issue")
 def create(owner: Annotated[str, typer.Option(show_default=False)],
            repo: Annotated[str, typer.Option(show_default=False)],
            title: Annotated[str, typer.Option(show_default=False)],

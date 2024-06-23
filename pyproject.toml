@@ -26,7 +26,7 @@ cmd = "pyinstaller --workpath .build --specpath dist -n ghmeister ghmeister/__ma
 [tool.poetry.group.dev.dependencies]
 pyinstaller = "^6.2.0"
 poethepoet = "^0.24.4"
-textual-dev = "^1.2.1"
+pytest = "^7.2.1"
 
 [build-system]
 requires = ["poetry-core"]

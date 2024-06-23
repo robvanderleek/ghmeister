@@ -33,6 +33,20 @@ pipx install ghmeister
     poetry publish
     ```
 
+## Local installation using pipx
+
+To install the `main` branch locally run:
+
+```shell
+pipx install git+https://github.com/robvanderleek/ghmeister.git
+```
+
+Or to install another branch locally run:
+
+```shell
+pip install git+https://github.com/robvanderleek/ghmeister.git@issue-123
+```
+
 # Feedback, suggestions and bug reports
 
 If you have suggestions for how GH Meister could be improved, or want to
