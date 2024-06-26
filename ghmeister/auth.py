@@ -24,28 +24,37 @@ def _token_is_valid(token: dict):
 def _device_flow_login() -> Union[dict, None]:
     result = None
     client_id = 'Iv1.7b1ad9c0ae2f37e8'
-    home = expanduser("~")
-    ghmeister_yml_path = Path(f'{home}/.ghmeister/github.yml')
-    config = {}
-    if ghmeister_yml_path.exists():
-        config = yaml.safe_load(open(ghmeister_yml_path))
-        if 'access_token' in config:
-            result = {'access_token': config['access_token']}
-        if 'refresh_token' in config:
-            result = _refresh_access_token(client_id, config['refresh_token'])
+    token = load_github_token_from_cache_file()
+    if token:
+        result = {'access_token': token}
     if not result:
         json = _device_flow_authentication(client_id)
         device_code = json['device_code']
         interval = json['interval']
         result = _poll_for_token(client_id, device_code, interval)
     if result:
-        Path(f'{home}/.ghmeister/').mkdir(exist_ok=True)
-        if 'refresh_token' in result:
-            config['refresh_token'] = result['refresh_token']
-        else:
-            config['access_token'] = result['access_token']
-        yaml.dump(config, open(ghmeister_yml_path, "w"))
+        save_github_token_to_cache_file(result['access_token'])
     return result
+
+
+def get_config_yml_path() -> Path:
+    home = expanduser("~")
+    return Path(f'{home}/.ghmeister/github.yml')
+
+
+def load_github_token_from_cache_file() -> str | None:
+    config_yml_path = get_config_yml_path()
+    if config_yml_path.exists():
+        config = yaml.safe_load(open(config_yml_path))
+        return config['access_token'] if 'access_token' in config else None
+
+
+def save_github_token_to_cache_file(token: str):
+    config_yml_path = get_config_yml_path()
+    home = expanduser("~")
+    Path(f'{home}/.ghmeister/').mkdir(exist_ok=True)
+    config = {'access_token': token}
+    yaml.dump(config, open(config_yml_path, "w"))
 
 
 def _device_flow_authentication(client_id: str):

@@ -4,6 +4,8 @@ import sys
 from rich.console import Console
 from sh import git
 
+from ghmeister.auth import load_github_token_from_cache_file, get_config_yml_path
+
 
 class Context:
     console = Console()
@@ -20,8 +22,11 @@ class Context:
     def _init_github_api_token():
         Context.token = os.getenv('GITHUB_MEISTER_TOKEN')
         if not Context.token:
+            Context.token = load_github_token_from_cache_file()
+        if not Context.token:
             Context.console.print(
-                '[red]GitHub access token not found in environment variable GITHUB_MEISTER_TOKEN[/red]')
+                'GitHub access token not found in environment variable GITHUB_MEISTER_TOKEN\n'
+                f'or YAML configuration file at {str(get_config_yml_path())}', style="red")
             sys.exit(1)
 
     @staticmethod
