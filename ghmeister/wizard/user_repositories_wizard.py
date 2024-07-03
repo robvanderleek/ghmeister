@@ -3,20 +3,21 @@ from InquirerPy import inquirer
 from ghmeister.Context import Context
 from ghmeister.commands.github.Repositories import Repositories
 from ghmeister.wizard.issues_wizard import issues_wizard
-from ghmeister.wizard.user_wizard import user_wizard
 from ghmeister.wizard.wizard_utils import register_shortcut_back
 
 
-def repository_wizard():
-    repo = Repositories.get(Context.get_owner(), Context.get_repo()).json()
+def user_repositories_wizard(login: str):
 
-    Context.console.print(f'[link=https://www.willmcgugan.com]{repo["full_name"]}[/link] >', style='bold white')
 
-    prompt = inquirer.select(message='', choices=['Issues', 'Pull Requests'])
+    # Context.console.print(f'[link=https://www.willmcgugan.com]{repo["full_name"]}[/link] >', style='bold white')
+
+    repos = Repositories.user_repos(affiliation='owner').json()
+    choices = [repo['full_name'] for repo in repos]
+    prompt = inquirer.select(message='', choices=choices)
     register_shortcut_back(prompt)
     selection = prompt.execute()
     command = selection['command'] if 'command' in selection else 'select'
     if command == 'back':
-        user_wizard()
+        return
     elif command == 'select':
         issues_wizard()

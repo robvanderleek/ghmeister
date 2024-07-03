@@ -6,8 +6,8 @@ from ghmeister.Context import Context
 BASE_URL = 'https://api.github.com'
 
 
-def api_get(endpoint: str) -> Response:
-    response = requests.get(f'{BASE_URL}/{endpoint}', headers=_get_headers())
+def api_get(endpoint: str, params: dict[str, any] | None = None) -> Response:
+    response = requests.get(f'{BASE_URL}/{endpoint}', headers=_get_headers(), params=params)
     response.raise_for_status()
     return response
 

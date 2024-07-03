@@ -3,6 +3,7 @@ from typing import Annotated
 import typer
 from requests import Response
 
+from ghmeister.commands.github.types.Visibility import Visibility
 from ghmeister.services.api_service import api_get
 
 
@@ -15,3 +16,9 @@ class Repositories:
             repo: Annotated[str, typer.Option(show_default=False)],
             ) -> Response:
         return api_get(f'repos/{owner}/{repo}')
+
+    @staticmethod
+    @app.command(help=f"List repositories for the authenticated user")
+    def user_repos(visibility: Visibility = Visibility.all,
+                   affiliation: str = 'owner,collaborator,organization_member') -> Response:
+        return api_get('user/repos', params={'visibility': visibility.value, 'affiliation': affiliation})

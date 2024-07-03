@@ -47,6 +47,16 @@ Or to install another branch locally run:
 pip install git+https://github.com/robvanderleek/ghmeister.git@issue-123
 ```
 
+## Building the binary distribution
+
+Generate a self-contained binary:
+
+```shell
+poetry run poe bundle
+```
+
+Then run the executable `dist/ghmeister/ghmeister`.
+
 # Feedback, suggestions and bug reports
 
 If you have suggestions for how GH Meister could be improved, or want to

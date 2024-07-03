@@ -1,6 +1,5 @@
 import sys
 
-import click
 import typer
 from dotenv import load_dotenv
 from requests import Response
@@ -9,9 +8,9 @@ from ghmeister.Context import Context
 from ghmeister.commands import Utils
 from ghmeister.commands.github import Issues, Users
 from ghmeister.commands.github.Repositories import Repositories
-from ghmeister.commands.github.Users import get_authenticated_user
 from ghmeister.utils import pretty_print_json
 from ghmeister.wizard.repository_wizard import repository_wizard
+from ghmeister.wizard.user_wizard import user_wizard
 
 load_dotenv()
 
@@ -42,16 +41,20 @@ def callback(ctx: typer.Context):
     """GH Meister: GitHub management made easy."""
 
 
+def wizard():
+    if Context.get_owner() and Context.get_repo():
+        repository_wizard()
+    else:
+        user_wizard()
+
+
 def main():
     Context.init()
     if len(sys.argv) == 1:
-        if Context.get_owner() and Context.get_repo():
-            try:
-                repository_wizard()
-            except KeyboardInterrupt:
-                print('\u2B50 Please star GH Meister on GitHub! https://github.com/robvanderleek/ghmeister')
-        else:
-            print(get_authenticated_user().json()['login'])
+        try:
+            wizard()
+        except KeyboardInterrupt:
+            print('\u2B50 Please star GH Meister on GitHub! https://github.com/robvanderleek/ghmeister')
     else:
         cli()
 

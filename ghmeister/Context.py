@@ -2,7 +2,7 @@ import os
 import sys
 
 from rich.console import Console
-from sh import git
+from sh import git, ErrorReturnCode
 
 from ghmeister.auth import load_github_token_from_cache_file, get_config_yml_path
 
@@ -31,7 +31,10 @@ class Context:
 
     @staticmethod
     def _init_github_repository_details():
-        origin: str = git('remote', 'get-url', 'origin')
+        try:
+            origin: str = git('remote', 'get-url', 'origin')
+        except ErrorReturnCode:
+            return
         origin = origin.strip()
         if 'github.com' in origin:
             origin = origin.replace('git@github.com:', '')
