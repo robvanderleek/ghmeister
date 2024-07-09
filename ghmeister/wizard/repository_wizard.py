@@ -12,7 +12,7 @@ def repository_wizard():
 
     Context.console.print(f'[link=https://www.willmcgugan.com]{repo["full_name"]}[/link] >', style='bold white')
 
-    prompt = inquirer.select(message='', choices=['Issues', 'Pull Requests'])
+    prompt = inquirer.select(message='Select:', choices=['Issues', 'Pull Requests'])
     register_shortcut_back(prompt)
     selection = prompt.execute()
     command = selection['command'] if 'command' in selection else 'select'
