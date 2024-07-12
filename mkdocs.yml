@@ -11,6 +11,10 @@ theme:
     - toc.integrate
     - navigation.footer
     - content.code.copy
+extra_css:
+  - stylesheets/asciinema-player.css
+extra_javascript:
+  - javascripts/asciinema-player.min.js
 markdown_extensions:
   - attr_list
 nav:

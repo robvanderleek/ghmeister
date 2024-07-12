@@ -1,4 +1,5 @@
 import sys
+from typing import Annotated, Optional
 
 import typer
 from dotenv import load_dotenv
@@ -11,6 +12,7 @@ from ghmeister.commands.github.Repositories import Repositories
 from ghmeister.utils import pretty_print_json
 from ghmeister.wizard.repository_wizard import repository_wizard
 from ghmeister.wizard.user_wizard import user_wizard
+from ghmeister.version import version
 
 load_dotenv()
 
@@ -35,10 +37,23 @@ cli.add_typer(Issues.issues, name="issue", hidden=True)
 cli.add_typer(Repositories.app, name="repositories", help="GitHub endpoints for repositories")
 cli.add_typer(Utils.utils, name="utils", help="Various utilities")
 
+def _version_callback(show: bool):
+    if show:
+        print(f"GitHub Meister version: {version}")
+        raise typer.Exit()
 
 @cli.callback(invoke_without_command=False)
-def callback(ctx: typer.Context):
+def callback(
+    version: Annotated[
+        Optional[bool],
+        typer.Option(
+            "--version", "-V", help="Show version", callback=_version_callback
+        ),
+    ] = None,
+):
     """GH Meister: GitHub management made easy."""
+    if version:
+        raise typer.Exit()
 
 
 def wizard():
