@@ -3,7 +3,7 @@
 GitHub management made easy.
 
 <div align="center">
-  <img src="docs/assets/gh-meister-logo.png" width="384"/>
+  <img src="docs/assets/logo.png" width="384"/>
 </div>
 
 # Introduction

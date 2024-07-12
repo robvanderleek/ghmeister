@@ -27,6 +27,7 @@ cmd = "pyinstaller --workpath .build --specpath dist -n ghmeister ghmeister/__ma
 pyinstaller = "^6.2.0"
 poethepoet = "^0.24.4"
 pytest = "^7.2.1"
+mkdocs-material = "^9.5.10"
 
 [build-system]
 requires = ["poetry-core"]
