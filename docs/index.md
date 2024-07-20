@@ -9,7 +9,7 @@
 
 ---
 
-GitHub Meister is a GitHub terminal client that tries to be a **simple**, yet
+GitHub Meister is a GitHub terminal client that aims to be a **simple**, yet
 **productive** tool for commen GitHub tasks and automations. 
 
 Core features:
@@ -30,6 +30,16 @@ pipx install ghmeister
 Output:
 
 ```shell
+Installed package ghmeister 0.1.0, installed using Python 3.12.4
+These apps are now globally available
+  - ghm
+done! ✨ 🌟 ✨
+```
+
+<!-- termynal -->
+```
+$ pipx install ghmeister
+---> 100%
 Installed package ghmeister 0.1.0, installed using Python 3.12.4
 These apps are now globally available
   - ghm

@@ -2,13 +2,16 @@ from typing import Callable
 
 from InquirerPy import inquirer
 
-from ghmeister.wizard.wizard_utils import register_shortcut_back
+from ghmeister.menu.menu_utils import register_shortcut_back
 
 
-class WizardBuilder:
-    def __init__(self, title: str, choices: dict[str, Callable]):
+class MenuBuilder:
+    def __init__(self, title: str, choices: dict[str, Callable] | None = None):
         self.title = title
-        self.choices = choices
+        self.choices: dict[str, Callable] = choices if choices else {}
+
+    def add_choice(self, key: str, value: Callable):
+        self.choices[key] = value
 
     def execute(self):
         while True:

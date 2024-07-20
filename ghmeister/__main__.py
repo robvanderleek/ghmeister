@@ -3,28 +3,30 @@ from typing import Annotated, Optional
 
 import typer
 from dotenv import load_dotenv
-from requests import Response
+from requests import Response, HTTPError
 
 from ghmeister.Context import Context
 from ghmeister.commands import Utils
-from ghmeister.commands.github import Issues, Users
-from ghmeister.commands.github.Repositories import Repositories
+from ghmeister.commands.github import Issues, Users, Repositories
 from ghmeister.commands.github.Users import get_authenticated_user
-from ghmeister.utils import pretty_print_json, pretty_print
+from ghmeister.menu.menu import repository_menu, user_menu
+from ghmeister.utils import pretty_print_json, format_data
 from ghmeister.version import version
-from ghmeister.wizard.wizard import repository_wizard, user_wizard
 
 load_dotenv()
 
 
 def handle_response(response: Response, version: Optional[bool] = None, json: bool = False):
     if response.ok:
+        if response.status_code == 204:
+            Context.console.print("[green]Success[/green]")
+            return
         res_json = response.json()
         if res_json:
             if json:
                 pretty_print_json(res_json)
             else:
-                pretty_print(res_json)
+                format_data(res_json)
         else:
             Context.console.print("[green]Success[/green]")
     else:
@@ -37,7 +39,7 @@ cli.add_typer(Users.users, name="users", help="GitHub endpoints for users (alias
 cli.add_typer(Users.users, name="user", hidden=True)
 cli.add_typer(Issues.issues, name="issues", help="GitHub endpoints for issues (alias: issue)")
 cli.add_typer(Issues.issues, name="issue", hidden=True)
-cli.add_typer(Repositories.app, name="repositories", help="GitHub endpoints for repositories")
+cli.add_typer(Repositories.repositories, name="repositories", help="GitHub endpoints for repositories")
 cli.add_typer(Utils.utils, name="utils", help="Various utilities")
 
 
@@ -69,10 +71,11 @@ def wizard():
     owner = Context.get_owner()
     repo = Context.get_repo()
     if owner and repo:
-        repository_wizard(owner, repo)
+        r = Repositories.get(owner, repo)
+        repository_menu(owner, repo)
     else:
         login = get_authenticated_user().json()['login']
-        user_wizard(login)
+        user_menu(login)
 
 
 def main():
@@ -84,7 +87,11 @@ def main():
             pass
         print('\u2B50 Please star GH Meister on GitHub! https://github.com/robvanderleek/ghmeister')
     else:
-        cli()
+        try:
+            cli()
+        except HTTPError as e:
+            Context.console.print(f"[red]{e.args[0]}[/red]")
+            sys.exit(1)
 
 
 if __name__ == '__main__':

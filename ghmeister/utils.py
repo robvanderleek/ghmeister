@@ -1,3 +1,5 @@
+import json
+
 from ghmeister.Context import Context
 
 
@@ -5,20 +7,22 @@ def pretty_print_json(data: dict):
     Context.console.print_json(data=data)
 
 
-def pretty_print(data: dict | list):
+def format_data(data: dict | list) -> str:
     if isinstance(data, list):
+        result = ''
         for item in data:
-            pretty_print_item(item)
+            result += format_item(item) + '\n'
+        return result
     else:
-        pretty_print_item(data)
+        return format_item(data)
 
 
-def pretty_print_item(item: dict):
+def format_item(item: dict) -> str:
     node_id = item['node_id'] if 'node_id' in item else None
     if not node_id:
-        Context.console.print_json(data=item)
+        return json.dumps(item)[:80]
     else:
         if node_id.startswith('I_'):
-            print(f'{item["number"]}: {item["title"]}')
+            return f'{item["number"]}: {item["title"]}'[:80]
         else:
-            print(f'{node_id}')
+            return f'{node_id}'[:80]

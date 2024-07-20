@@ -1,6 +1,6 @@
 from unittest.mock import patch
 
-from ghmeister.commands.github.Repositories import Repositories
+from ghmeister.commands.github import Repositories
 
 
 @patch('ghmeister.commands.github.Repositories.api_get')

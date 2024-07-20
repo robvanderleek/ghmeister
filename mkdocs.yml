@@ -11,6 +11,8 @@ theme:
     - toc.integrate
     - navigation.footer
     - content.code.copy
+plugins:
+  - termynal
 extra_css:
   - stylesheets/asciinema-player.css
 extra_javascript:
