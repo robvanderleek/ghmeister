@@ -2,12 +2,14 @@ from typing import Callable
 
 from InquirerPy import inquirer
 
+from ghmeister.Context import Context
 from ghmeister.menu.menu_utils import register_shortcut_back
 
 
 class MenuBuilder:
     def __init__(self, breadcrumbs: str | list[str], choices: dict[str, Callable] | None = None):
-        self.title = ' | '.join(breadcrumbs) if isinstance(breadcrumbs, list) else breadcrumbs
+        self.breadcrumbs = breadcrumbs if isinstance(breadcrumbs, list) else [breadcrumbs]
+        self.breadcrumbs[-1] = f'[bold]{self.breadcrumbs[-1]}[/bold]'
         self.choices: dict[str, Callable] = choices if choices else {}
 
     def add_choice(self, key: str, value: Callable):
@@ -15,7 +17,8 @@ class MenuBuilder:
 
     def execute(self):
         while True:
-            print(self.title.center(80))
+            title = ' | '.join(self.breadcrumbs)
+            Context.console.print(title.center(80))
             prompt = inquirer.select(
                 message='Select:',
                 choices=[str(k) for k in self.choices.keys()],
