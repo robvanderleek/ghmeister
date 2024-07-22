@@ -1,27 +1,27 @@
 from typing import Callable
 
 from ghmeister.commands.github import Repositories, Issues
-from ghmeister.commands.github.types.Issue import Issue
+from ghmeister.commands.github.types.Repository import Repository
 from ghmeister.menu.MenuBuilder import MenuBuilder
 from ghmeister.menu.issue_menu import issue_menu
-from ghmeister.utils import format_data
+from ghmeister.utils import fmt_oneline, fmt_short
 
 
-def issues_list_menu(owner: str, repo: str):
-    menu = MenuBuilder(f'{owner}/{repo} | Open Issues')
-    issues = Issues.list_repository_issues(owner, repo).json()
+def issues_list_menu(repository: Repository):
+    menu = MenuBuilder([fmt_short(repository), 'Open Issues'])
+    issues = Issues.list_repository_issues(repository.owner.login, repository.name)
     for issue in issues:
-        menu.add_choice(format_data(issue), lambda i=issue: issue_menu(Issue.model_validate(i)))
+        menu.add_choice(fmt_oneline(issue), lambda r=repository, i=issue: issue_menu(r, i))
     menu.execute()
 
 
-def issues_menu(owner: str, repo: str):
-    MenuBuilder(f'{owner}/{repo} | Issues', {'List': lambda o=owner, r=repo: issues_list_menu(o, r)}).execute()
+def issues_menu(repository: Repository):
+    MenuBuilder([fmt_short(repository), 'Issues'],
+                {'List': lambda r=repository: issues_list_menu(r)}).execute()
 
 
-def repository_menu(owner: str, repo: str):
-    MenuBuilder(f'{owner}/{repo}',
-                {'Issues': lambda o=owner, r=repo: issues_menu(o, r)}).execute()
+def repository_menu(repository: Repository):
+    MenuBuilder(fmt_short(repository), {'Issues': lambda r=repository: issues_menu(r)}).execute()
 
 
 def user_menu(login: str):

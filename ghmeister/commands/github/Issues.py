@@ -3,6 +3,7 @@ from typing import Annotated, Optional
 import typer
 from requests import Response
 
+from ghmeister.commands.github.types.Issue import Issue
 from ghmeister.commands.github.types.LockReason import LockReason
 from ghmeister.services.api_service import api_post, api_get, api_put, api_delete
 
@@ -23,8 +24,8 @@ def create(owner: str,
 
 
 @issues.command(help=f"List repository issues")
-def list_repository_issues(owner: str, repo: str):
-    return api_get(f'repos/{owner}/{repo}/issues')
+def list_repository_issues(owner: str, repo: str) -> list[Issue]:
+    return api_get(f'repos/{owner}/{repo}/issues', response_model=list[Issue])
 
 
 @issues.command(help=f"Lock an issue")

@@ -10,7 +10,7 @@ from ghmeister.commands import Utils
 from ghmeister.commands.github import Issues, Users, Repositories
 from ghmeister.commands.github.Users import get_authenticated_user
 from ghmeister.menu.menu import repository_menu, user_menu
-from ghmeister.utils import pretty_print_json, format_data
+from ghmeister.utils import pretty_print_json, fmt_oneline
 from ghmeister.version import version
 
 load_dotenv()
@@ -26,7 +26,7 @@ def handle_response(response: Response, version: Optional[bool] = None, json: bo
             if json:
                 pretty_print_json(res_json)
             else:
-                format_data(res_json)
+                fmt_oneline(res_json)
         else:
             Context.console.print("[green]Success[/green]")
     else:
@@ -71,8 +71,7 @@ def wizard():
     owner = Context.get_owner()
     repo = Context.get_repo()
     if owner and repo:
-        r = Repositories.get(owner, repo)
-        repository_menu(owner, repo)
+        repository_menu(Repositories.get(owner, repo))
     else:
         login = get_authenticated_user().json()['login']
         user_menu(login)

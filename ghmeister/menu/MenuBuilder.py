@@ -6,8 +6,8 @@ from ghmeister.menu.menu_utils import register_shortcut_back
 
 
 class MenuBuilder:
-    def __init__(self, title: str, choices: dict[str, Callable] | None = None):
-        self.title = title
+    def __init__(self, breadcrumbs: str | list[str], choices: dict[str, Callable] | None = None):
+        self.title = ' | '.join(breadcrumbs) if isinstance(breadcrumbs, list) else breadcrumbs
         self.choices: dict[str, Callable] = choices if choices else {}
 
     def add_choice(self, key: str, value: Callable):

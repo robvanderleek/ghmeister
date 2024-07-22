@@ -1,28 +1,23 @@
-import json
-
 from ghmeister.Context import Context
+from ghmeister.commands.github.types.Issue import Issue
+from ghmeister.commands.github.types.Repository import Repository
 
 
 def pretty_print_json(data: dict):
     Context.console.print_json(data=data)
 
 
-def format_data(data: dict | list) -> str:
-    if isinstance(data, list):
-        result = ''
-        for item in data:
-            result += format_item(item) + '\n'
-        return result
+def fmt_short(item: any) -> str:
+    if isinstance(item, Repository):
+        return f'{item.owner.login}/{item.name}'
+    elif isinstance(item, Issue):
+        return f'#{item.number}'
     else:
-        return format_item(data)
+        return str(item)
 
 
-def format_item(item: dict) -> str:
-    node_id = item['node_id'] if 'node_id' in item else None
-    if not node_id:
-        return json.dumps(item)[:80]
+def fmt_oneline(item: any) -> str:
+    if isinstance(item, Issue):
+        return f'#{item.number}: {item.title}'
     else:
-        if node_id.startswith('I_'):
-            return f'{item["number"]}: {item["title"]}'[:80]
-        else:
-            return f'{node_id}'[:80]
+        return fmt_short(item)

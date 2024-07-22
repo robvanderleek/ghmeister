@@ -1,9 +1,14 @@
+from typing import TypeVar, get_args, Type, get_origin
+
 import requests
+from pydantic import BaseModel
 from requests import Response
 
 from ghmeister.Context import Context
 
 BASE_URL = 'https://api.github.com'
+
+T = TypeVar('T', bound=BaseModel)
 
 
 def api_delete(endpoint: str) -> Response:
@@ -12,10 +17,22 @@ def api_delete(endpoint: str) -> Response:
     return response
 
 
-def api_get(endpoint: str, params: dict[str, any] | None = None) -> Response:
+def api_get(endpoint: str, params: dict[str, any] | None = None, response_model: type[T | list[T] | None] = None) \
+        -> T | list[T] | dict:
     response = requests.get(f'{BASE_URL}/{endpoint}', headers=_get_headers(), params=params)
     response.raise_for_status()
-    return response
+    if response_model:
+        if get_origin(response_model) == list:
+            m = get_args(response_model)[0]
+        else:
+            m = response_model
+        json = response.json()
+        if isinstance(json, list):
+            return [m.model_validate(item) for item in json]
+        else:
+            return m.model_validate(response.json())
+    else:
+        return response.json()
 
 
 def api_post(endpoint: str, data: dict) -> Response:
