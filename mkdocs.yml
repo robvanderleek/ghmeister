@@ -12,7 +12,9 @@ theme:
     - navigation.footer
     - content.code.copy
 plugins:
+  - search
   - termynal
+  - mkdocstrings
 extra_css:
   - stylesheets/asciinema-player.css
 extra_javascript:
@@ -21,3 +23,5 @@ markdown_extensions:
   - attr_list
 nav:
   - 'index.md'
+  - API Documentation:
+    - 'api/Issues.md'
