@@ -1,0 +1,2 @@
+exclude:
+  - docs/javascripts/asciinema-player.min.js 
