@@ -19,12 +19,14 @@ def create(owner: str,
            labels: Annotated[Optional[list[str]], typer.Option()] = None,
            assignees: Annotated[Optional[list[str]], typer.Option()] = None
            ) -> Response:
+    """ Create an issue """
     data = {'title': title, 'body': body, 'milestone': milestone, 'labels': labels, 'assignees': assignees}
     return api_post(f'repos/{owner}/{repo}/issues', data)
 
 
 @issues.command(help=f"List repository issues")
 def list_repository_issues(owner: str, repo: str) -> list[Issue]:
+    """ List repository issues """
     return api_get(f'repos/{owner}/{repo}/issues', response_model=list[Issue])
 
 
